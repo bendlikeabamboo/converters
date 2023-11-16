@@ -151,7 +151,7 @@ fn estimate_pi() -> f32 {
     print_converter_title(title);
 
     let user_input: u32 = read_int_input();
-    let result = pi::estimate(user_input);
+    let result = pi::simulate(user_input);
     result
 }
 
@@ -160,6 +160,6 @@ fn estimate_pi_optimized() -> f32 {
     print_converter_title(title);
 
     let user_input: u32 = read_int_input();
-    let result = pi::estimate_optimized(user_input);
+    let result = pi::simulate_memory_optimized(user_input);
     result
 }
