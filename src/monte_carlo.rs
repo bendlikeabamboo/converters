@@ -1,11 +1,12 @@
 pub mod pi {
+    use crate::gui_own::*;
     use rand::Rng;
     struct Coordinate {
         x: f32,
         y: f32,
     }
 
-    pub fn simulate(iterations: u32) -> f32 {
+    fn simulate(iterations: u32) -> f32 {
         let mut results: Vec<bool> = Vec::new();
         let mut rng = rand::thread_rng();
 
@@ -27,9 +28,9 @@ pub mod pi {
         estimated_pi
     }
 
-    pub fn simulate_memory_optimized(iterations: u32) -> f32 {
-        let mut points_within_radius = 0;
-        let mut all_points = 0;
+    fn simulate_memory_optimized(iterations: u32) -> f32 {
+        let mut points_within_radius: i32 = 0;
+        let mut all_points: i32 = 0;
         let mut rng = rand::thread_rng();
 
         for _ in 1..iterations {
@@ -49,4 +50,23 @@ pub mod pi {
         println!("Result {estimated_pi}");
         estimated_pi
     }
+
+    pub fn estimate_pi() -> f32 {
+        let title: &str = "Pi Estimator";
+        print_converter_title(title);
+
+        let user_input: u32 = read_int_input();
+        let result = simulate(user_input);
+        result
+    }
+
+    pub fn estimate_pi_optimized() -> f32 {
+        let title: &str = "Pi Estimator (Optimized)";
+        print_converter_title(title);
+
+        let user_input: u32 = read_int_input();
+        let result = simulate_memory_optimized(user_input);
+        result
+    }
+
 }
